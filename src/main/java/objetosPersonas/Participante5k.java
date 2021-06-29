@@ -13,9 +13,12 @@ package objetosPersonas;
 public class Participante5k extends Estudiante {
     private float tiempo;
 
-    public Participante5k(float tiempo, String id, String nombre, String carrera, String genero) {
-        super(id, nombre, carrera, genero);
+    public Participante5k(float tiempo, String id, String nombre, char genero, String carrera) {
+        super(id, nombre, genero, carrera);
         this.tiempo = tiempo;
+    }
+    public Participante5k(){
+        
     }
 
     public float getTiempo() {

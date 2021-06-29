@@ -12,20 +12,25 @@ package objetosPersonas;
  */
 public class Estudiante extends Participante {
     protected String carrera;
-    protected String genero;
+    protected char genero;
 
-    public Estudiante(String id, String nombre, String carrera, String genero) {
+    public Estudiante(String id, String nombre, char genero, String carrera ) {
         super(id, nombre);
         this.carrera = carrera;
         this.genero = genero;
         
     }
+    
+    public Estudiante(){
+        
+    }
+    
 
     public String getCarrera() {
         return carrera;
     }
 
-    public String getGenero() {
+    public char getGenero() {
         return genero;
     }
 
@@ -33,8 +38,13 @@ public class Estudiante extends Participante {
         this.carrera = carrera;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(char genero) {
         this.genero = genero;
+    }
+    
+    @Override
+    public String toString() {
+        return "Estudiante{" + "id=" + id + ", nombre=" + nombre + '}';
     }
     
     

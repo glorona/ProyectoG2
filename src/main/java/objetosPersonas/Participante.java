@@ -29,6 +29,8 @@ public class Participante {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+
 
     public Participante(String id, String nombre) {
         super();
@@ -36,6 +38,9 @@ public class Participante {
         this.nombre = nombre;
     }
     
+    public Participante(){
+        
+    }
     
     
     

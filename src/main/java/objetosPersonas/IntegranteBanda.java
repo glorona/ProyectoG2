@@ -16,8 +16,8 @@ enum rolBanda{
 public class IntegranteBanda extends Estudiante {
     private rolBanda rol;
 
-    public IntegranteBanda(rolBanda rol, String id, String nombre, String carrera, String genero) {
-        super(id, nombre, carrera, genero);
+    public IntegranteBanda(rolBanda rol, String id, String nombre, char genero, String carrera) {
+        super(id, nombre, genero,carrera);
         this.rol = rol;
     }
 
