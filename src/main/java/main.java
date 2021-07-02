@@ -17,11 +17,11 @@ import java.io.InputStreamReader;
 import java.util.*;
 import objetosPersonas.*;
 
-public class main {
+public class Main {
      private ArrayList<Estudiante> listaEstudiantes;
      private ArrayList<Carrera5k> listaCarreras;
      private Carrera5k carrera;
-    public main() {//crea la lista
+    public Main() {//crea la lista
         listaEstudiantes = new ArrayList<>();
         listaCarreras = new ArrayList<>();
         carrera = new Carrera5k();
@@ -61,8 +61,8 @@ public class main {
     
     
     public void cargarActividades(){
-        listaCarreras.add(new Carrera5k("21-06-2021", "5pm", "$30", "$15", "$10",0));
-        listaCarreras.add(new Carrera5k("21-05-2020", "5pm", "$40", "$25", "$5",0));
+        listaCarreras.add(new Carrera5k("21-06-2021", "5pm", "$30", "$15", "$10"));
+        listaCarreras.add(new Carrera5k("21-05-2020", "5pm", "$40", "$25", "$5"));
     }
     
     public int menu(){
@@ -130,7 +130,7 @@ public class main {
         int usring;
         System.out.println("Hola, esta es la prueba del proyecto correspondiente al grupo dos.");
    
-        main m1 = new main();
+        Main m1 = new Main();
         m1.cargarEstudiantes();
         m1.cargarActividades();
         do{

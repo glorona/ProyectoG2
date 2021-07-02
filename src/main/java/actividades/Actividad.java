@@ -168,6 +168,10 @@ public class Actividad {
                 listaGanadores[contador-1] = new Participante5k(time,e.getId(),e.getNombre(),e.getGenero(),e.getCarrera());
                 
             }
+            else{
+                System.out.println("Numero no valido.");
+                registrarGanadores(listaE);
+            }
                 
             }
         contador++;

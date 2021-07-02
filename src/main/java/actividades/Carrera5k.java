@@ -14,25 +14,20 @@ import java.util.*;
  * @author Usuario
  */
 public class Carrera5k extends Actividad{
-    private int cantPar;
     
     
     public Carrera5k(){
         super();
     }
-    public Carrera5k(String fecha, String hora, String premio1, String premio2, String premio3,int cantPar){
+    public Carrera5k(String fecha, String hora, String premio1, String premio2, String premio3){
         super(fecha,hora,premio1,premio2,premio3);
-        this.cantPar = cantPar;
     }
     
 
-    public int getCantPar() {
-        return cantPar;
-    }
 
     @Override
     public String toString() {
-        return super.toString() + " Cantidad de participantes: " + cantPar; //To change body of generated methods, choose Tools | Templates.
+        return super.toString() + " Cantidad de participantes: " + listaParticipantes.size(); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void verificarCarrera(ArrayList<Carrera5k> lista_ac,ArrayList<Estudiante> listaE ) {
@@ -55,7 +50,6 @@ public class Carrera5k extends Actividad{
     @Override
     public void registrarParticipante(ArrayList<Estudiante> listaE) {
         super.registrarParticipante(listaE); //To change body of generated methods, choose Tools | Templates.
-        cantPar = listaParticipantes.size();
         
     }
     
