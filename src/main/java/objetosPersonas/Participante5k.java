@@ -17,6 +17,12 @@ public class Participante5k extends Estudiante {
         super(id, nombre, genero, carrera);
         this.tiempo = tiempo;
     }
+    
+    public Participante5k(Estudiante e, float tiempo){
+        super(e.getId(),e.getNombre(),e.getGenero(),e.getCarrera()); //String id, String nombre, char genero, String carrera
+        this.tiempo = tiempo;
+        
+    }
     public Participante5k(){
         
     }

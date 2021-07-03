@@ -10,7 +10,7 @@ public class Actividad {
     private String premio_1;
     private String premio_2;
     private String premio_3;
-    protected ArrayList<Estudiante> listaParticipantes;
+    protected ArrayList<Participante> listaParticipantes;
     protected Participante[] listaGanadores;
     
     
@@ -60,7 +60,7 @@ public class Actividad {
         return premio_3;
     }
 
-    public ArrayList<Estudiante> getListaParticipantes() {
+    public ArrayList<Participante> getListaParticipantes() {
         return listaParticipantes;
     }
 
@@ -137,45 +137,38 @@ public class Actividad {
         
     }
     
-    public void registrarGanadores(ArrayList<Estudiante> listaE){
+    public void registrarGanadores(ArrayList<Participante> listaP){
         String iduser;
-        String lugar = "";
-        int contador;
-        contador = 1;
+        int posicion = -1;
+        int contador =  1;
         Scanner sc = new Scanner(System.in);
-        do{
-        
-        switch(contador){
-            case 1:
-                lugar = "Primer";
-                break;
-            case 2:
-                lugar = "Segundo";
-                break;
-            case 3:
-                lugar = "Tercer";
-                
-        }
-        System.out.println("Ingreso de "+ lugar + " lugar");
+        while(contador<4){
+        posicion = -1;
+        System.out.println("Ingreso del " + contador + " lugar");
+        while(posicion==-1){
         System.out.println("Ingrese id del estudiante:");
         iduser = sc.nextLine();
-        for(Estudiante e: listaE){
-            if(e.getId().equals(iduser)){
-                float time;
-                System.out.println("Ingrese tiempo ");
-                time = sc.nextFloat();
-                sc.nextLine();
-                listaGanadores[contador-1] = new Participante5k(time,e.getId(),e.getNombre(),e.getGenero(),e.getCarrera());
-                
+        for(int i = 0; i<listaP.size();i++){
+            if(listaP.get(i).getId().equals(iduser)){
+                posicion = i;
+                break;
             }
-            else{
-                System.out.println("Numero no valido.");
-                registrarGanadores(listaE);
-            }
-                
-            }
+            
+        }
+        
+
+        
+        }
+        System.out.println("Ingrese tiempo ");
+        float time;
+        time = sc.nextFloat();
+        sc.nextLine();
+        listaGanadores[contador-1] = new Participante5k((Estudiante) listaP.get(posicion), time);
         contador++;
-        } while(contador<4);
+        }
+            
+
+
         
         
     }
