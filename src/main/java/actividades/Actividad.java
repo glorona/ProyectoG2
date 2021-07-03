@@ -137,10 +137,29 @@ public class Actividad {
         
     }
     
+    
+    public int buscarParticipante(String idu,ArrayList<Participante> listaP ){
+        int posicion = -1;
+        int i = 0;
+        while(i<listaP.size() && posicion == -1){
+            if(listaP.get(i).getId().equals(idu)){
+                posicion = i;
+                i++;
+            }
+            else{
+                i++;
+            }
+            
+            
+        }
+        return posicion;
+    }
+    
     public void registrarGanadores(ArrayList<Participante> listaP){
         String iduser;
-        int posicion = -1;
+        int posicion;
         int contador =  1;
+        int i=0;
         Scanner sc = new Scanner(System.in);
         while(contador<4){
         posicion = -1;
@@ -148,15 +167,7 @@ public class Actividad {
         while(posicion==-1){
         System.out.println("Ingrese id del estudiante:");
         iduser = sc.nextLine();
-        for(int i = 0; i<listaP.size();i++){
-            if(listaP.get(i).getId().equals(iduser)){
-                posicion = i;
-                break;
-            }
-            
-        }
-        
-
+        posicion = buscarParticipante(iduser, listaP);
         
         }
         System.out.println("Ingrese tiempo ");
