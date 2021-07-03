@@ -21,10 +21,16 @@ public class Main {
      private ArrayList<Estudiante> listaEstudiantes;
      private ArrayList<Carrera5k> listaCarreras;
      private Carrera5k carrera;
+     private ArrayList<TorneoVideojuegos> listatorneos;
+     private TorneoVideojuegos torneo;
+     
+     
     public Main() {//crea la lista
         listaEstudiantes = new ArrayList<>();
         listaCarreras = new ArrayList<>();
+        listatorneos = new ArrayList<>();
         carrera = new Carrera5k();
+        torneo = new TorneoVideojuegos();
     }
 
     public void cargarEstudiantes() {
@@ -63,6 +69,8 @@ public class Main {
     public void cargarActividades(){
         listaCarreras.add(new Carrera5k("21-06-2021", "5pm", "$30", "$15", "$10"));
         listaCarreras.add(new Carrera5k("21-05-2020", "5pm", "$40", "$25", "$5"));
+        listatorneos.add(new TorneoVideojuegos("22-06-2020", "4pm", "$50", "$30", "$15", "LOL"));
+        listatorneos.add(new TorneoVideojuegos("22-06-2021", "4pm", "$55", "35", "20", "FreeFire"));
     }
     
     public int menu(){
@@ -126,6 +134,54 @@ public class Main {
         }
    
     
+    public void menutorneo(){
+        int ingreso;
+        Scanner sc = new Scanner(System.in);
+        do{
+        System.out.println("\nTorneos disponibles: \n");
+        for(TorneoVideojuegos tor: listatorneos){
+                System.out.println(tor);
+            }
+ 
+        System.out.println("\n Bienvenido, Seleccione una opcion");
+        System.out.println("1. Crear nuevo torneo");
+        System.out.println("2. Registrar participantes");
+        System.out.println("3. Registrar Ganadores");
+        System.out.println("4. Volver al menu principal");
+        
+        ingreso = sc.nextInt();
+        sc.nextLine();
+            switch(ingreso){
+                case 1:
+                    System.out.println("Solo esta para mantener integridad del programa, dado que esto no se hace en grupos de 3.");
+                    break;
+                case 2:
+                    String usrid;
+                    System.out.println("Registro de Participantes");
+                    System.out.println("Ingrese id del torneo:");
+                    usrid = sc.nextLine();
+                    for(TorneoVideojuegos torneo: listatorneos){
+                        if(torneo.getId().equals(usrid)){
+                            System.out.println("Registro de Participantes en torneo de videojuego " + torneo.getVideojuego());
+                                torneo.registrarParticipante(listaEstudiantes);
+                } } break;
+                case 3:
+                    String carrid;
+                    System.out.println("Registro de Ganadores");
+                    System.out.println("Ingrese id del torneo:");
+                    carrid = sc.nextLine();
+                    for(TorneoVideojuegos torn: listatorneos){
+                        if(torn.getId().equals(carrid)){
+                            torn.registrarGanadores(torn.getListaParticipantes());
+                        }
+            }
+            }
+        
+    }while(!(ingreso==4));
+        }
+    
+    
+    
     public static void main(String[] args) {
         int usring;
         System.out.println("Hola, esta es la prueba del proyecto correspondiente al grupo dos.");
@@ -139,7 +195,10 @@ public class Main {
                 case 1:
                     m1.menu5k();
                     break;
-                    
+                case 3:
+                    m1.menutorneo();
+                    break;
+                
             }
         }while(!(usring==4));
     }
