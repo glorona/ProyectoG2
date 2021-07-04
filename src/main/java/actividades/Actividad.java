@@ -156,10 +156,12 @@ public class Actividad {
     }
     
     public void registrarGanadores(ArrayList<Participante> listaP){
+        
+        /*
         String iduser;
         int posicion;
         int contador =  1;
-        int i=0;
+        //int i=0;
         Scanner sc = new Scanner(System.in);
         while(contador<4){
         posicion = -1;
@@ -176,12 +178,11 @@ public class Actividad {
         sc.nextLine();
         listaGanadores[contador-1] = new Participante5k((Estudiante) listaP.get(posicion), time);
         contador++;
-        }
-            
-
-
+        } */
+    
         
         
     }
+   
     
 }

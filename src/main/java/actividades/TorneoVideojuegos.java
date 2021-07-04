@@ -57,6 +57,34 @@ public class TorneoVideojuegos extends Actividad{
         
     }
     
+    
+    @Override
+    public void registrarGanadores(ArrayList<Participante> listaP){
+        
+        
+        
+        
+        String iduser;
+        int posicion;
+        int contador =  1;
+        //int i=0;
+        Scanner sc = new Scanner(System.in);
+        while(contador<4){
+        posicion = -1;
+        System.out.println("Ingreso del " + contador + " lugar");
+        while(posicion==-1){
+        System.out.println("Ingrese id del estudiante:");
+        iduser = sc.nextLine();
+        posicion = buscarParticipante(iduser, listaP);
+        
+        }
+        
+        System.out.println("Estudiante "+ listaP.get(posicion).getNombre()+" ganador");
+        listaGanadores[contador-1] = listaP.get(posicion);
+        contador++;
+        } 
 
+     
+    } 
     
 }
