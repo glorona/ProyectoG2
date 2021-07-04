@@ -54,7 +54,7 @@ public class Carrera5k extends Actividad{
     }
     
     
-    @Override
+    //@Override
    public void registrarGanadores(ArrayList<Participante> listaP){
         
        

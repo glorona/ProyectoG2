@@ -58,7 +58,7 @@ public class TorneoVideojuegos extends Actividad{
     }
     
     
-    @Override
+    //@Override
     public void registrarGanadores(ArrayList<Participante> listaP){
         
         
