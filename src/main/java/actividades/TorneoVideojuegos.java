@@ -34,21 +34,22 @@ public class TorneoVideojuegos extends Actividad{
         return super.toString() +" Videojuego: "+ videojuego + " Cantidad de participantes: " + listaParticipantes.size(); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public void verificarTorneo(ArrayList<TorneoVideojuegos> lista,ArrayList<Estudiante> listaE ) {
-        String usrid;
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Registro de Participantes");
-        System.out.println("Ingrese ID del torneo:");
-        usrid = sc.nextLine();
-        for(TorneoVideojuegos torneo: lista){
-                if(torneo.getId().equals(usrid)){
-                    System.out.println("Registro de participantes en el torneo de videojuego " + torneo.getVideojuego());
-                    torneo.registrarParticipante(listaE);
-                    break;
-                }
+   
+    public int verificarTorneo(ArrayList<TorneoVideojuegos> listator, ArrayList<Estudiante> listaE, String idusr){
+        int posicion = -1;
+        int i = 0;
+        while(i<listator.size() && posicion == -1){
+            if(listator.get(i).getId().equals(idusr)){
+                posicion = i;
+                i++;
+            }
+            else{
+                i++;
+            }
+            
             
         }
-        
+        return posicion;
     }
     
     @Override
@@ -58,16 +59,11 @@ public class TorneoVideojuegos extends Actividad{
     }
     
     
-    //@Override
+    
     public void registrarGanadores(ArrayList<Participante> listaP){
-        
-        
-        
-        
         String iduser;
         int posicion;
         int contador =  1;
-        //int i=0;
         Scanner sc = new Scanner(System.in);
         while(contador<4){
         posicion = -1;
@@ -76,16 +72,31 @@ public class TorneoVideojuegos extends Actividad{
         System.out.println("Ingrese id del estudiante:");
         iduser = sc.nextLine();
         posicion = buscarParticipante(iduser, listaP);
-        
+        if(verificarGanador(iduser,listaGanadores) || posicion ==-1){
+                System.out.println("Ganador ya esta en la lista o no existe en el torneo.");
         }
-        
-        System.out.println("Estudiante "+ listaP.get(posicion).getNombre()+" ganador");
-        listaGanadores[contador-1] = listaP.get(posicion);
-        contador++;
+        else{
+            
+            listaGanadores[contador-1] = listaP.get(posicion);
+            contador++;
+            System.out.println("Estudiante " + listaP.get(posicion).getNombre() + " ganador");
+            
+        }
+      
         } 
-
+            
+        }
+    }
+    
+    public boolean verificarGanador(String id,Participante[] listaG){
+        for(int z=0;z<listaG.length;z++){
+            if(listaG[z] != null && listaG[z].getId().equals(id)){
+                return true;
+                
+            }
+        }
+        return false;
         
-     
-    } 
+    }
     
 }

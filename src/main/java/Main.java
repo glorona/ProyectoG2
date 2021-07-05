@@ -160,25 +160,34 @@ public class Main {
                     System.out.println("Solo esta para mantener integridad del programa, dado que esto no se hace en grupos de 3.");
                     break;
                 case 2:
-                    String usrid;
-                    System.out.println("Registro de Participantes");
-                    System.out.println("Ingrese id del torneo:");
-                    usrid = sc.nextLine();
-                    for(TorneoVideojuegos torneo: listatorneos){
-                        if(torneo.getId().equals(usrid)){
-                            System.out.println("Registro de Participantes en torneo de videojuego " + torneo.getVideojuego());
-                                torneo.registrarParticipante(listaEstudiantes);
-                } } break;
+                    String id;
+                    int verificacion;
+                    System.out.println("Ingrese ID del torneo:");
+                    id = sc.nextLine();
+                    
+                    verificacion = torneo.verificarTorneo(listatorneos, listaEstudiantes, id);
+                    System.out.println("Registro de Participantes en torneo de videojuego " + listatorneos.get(verificacion).getVideojuego());
+             
+                    if (verificacion>=0){
+                        listatorneos.get(verificacion).registrarParticipante(listaEstudiantes);
+                        
+                    }
+                    break;
+                    
+
                 case 3:
-                    String carrid;
-                    System.out.println("Registro de Ganadores");
-                    System.out.println("Ingrese id del torneo:");
-                    carrid = sc.nextLine();
-                    for(TorneoVideojuegos torn: listatorneos){
-                        if(torn.getId().equals(carrid)){
-                            torn.registrarGanadores(torn.getListaParticipantes());
-                        }
-            }
+                
+                    String usrid2;
+                    int verificaciontor;
+                    System.out.println("Ingrese ID del torneo:");
+                    usrid2 = sc.nextLine();
+                    verificaciontor = torneo.verificarTorneo(listatorneos, listaEstudiantes,usrid2);
+                    if(verificaciontor>=0){
+                        listatorneos.get(verificaciontor).registrarGanadores(listatorneos.get(verificaciontor).getListaParticipantes());
+                    }
+                    
+                    
+            
             }
         
     }while(!(ingreso==4));

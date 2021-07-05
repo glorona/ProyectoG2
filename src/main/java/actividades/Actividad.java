@@ -127,6 +127,7 @@ public class Actividad {
     public void registrarParticipante(ArrayList<Estudiante> listaE){
         String iduser;
         Scanner sc = new Scanner(System.in);
+        System.out.println("\nINGRESE 0 (CERO) CUANDO YA NO QUIERA SEGUIR REGISTRANDO PARTICIPANTES\n");
         do{
         System.out.println("Ingrese id del estudiante:");
         iduser = sc.nextLine();
@@ -139,7 +140,7 @@ public class Actividad {
                    
            
                 listaParticipantes.add(e);
-                System.out.println("Estudiante" + e.getNombre() + " Registrado");
+                System.out.println("Estudiante " + e.getNombre() + " Registrado");
             }
         }
         }
