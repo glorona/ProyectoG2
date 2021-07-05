@@ -114,18 +114,24 @@ public class Main {
                     System.out.println("Solo esta para mantener integridad del programa, dado que esto no se hace en grupos de 3.");
                     break;
                 case 2:
-                    carrera.verificarCarrera(listaCarreras, listaEstudiantes); 
+                    String usrid;
+                    int verificacionC;
+                    System.out.println("Ingrese ID de la competencia:");
+                    usrid = sc.nextLine();
+                    verificacionC = carrera.verificarCarrera(listaCarreras, listaEstudiantes,usrid);
+                    if(verificacionC>=0){
+                        listaCarreras.get(verificacionC).registrarParticipante(listaEstudiantes);
+                    }
                     break;
                 case 3:
-                    String carrid;
-                    System.out.println("Registro de Ganadores");
-                    System.out.println("Ingrese id de la carrera:");
-                    carrid = sc.nextLine();
-                    for(Carrera5k car: listaCarreras){
-                        if(car.getId().equals(carrid)){
-                            car.registrarGanadores(car.getListaParticipantes());
-                        }
-            }
+                    String usrid2;
+                    int verificacionCarr;
+                    System.out.println("Ingrese ID de la competencia:");
+                    usrid2 = sc.nextLine();
+                    verificacionCarr = carrera.verificarCarrera(listaCarreras, listaEstudiantes,usrid2);
+                    if(verificacionCarr>=0){
+                        listaCarreras.get(verificacionCarr).registrarGanadores(listaCarreras.get(verificacionCarr).getListaParticipantes());
+                    }
             }
         
     }while(!(ingreso==4));

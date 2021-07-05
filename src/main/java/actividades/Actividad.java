@@ -132,15 +132,23 @@ public class Actividad {
         iduser = sc.nextLine();
         for(Estudiante e: listaE){
             if(e.getId().equals(iduser)){
+                if(listaParticipantes.contains(e)){
+                    System.out.println("Estudiante ya fue agregado.");
+                }
+                else{
+                   
+           
                 listaParticipantes.add(e);
                 System.out.println("Estudiante" + e.getNombre() + " Registrado");
             }
+        }
         }
         } while(!(iduser.equals("0")));
         
         
         
     }
+    
     
     
     public int buscarParticipante(String idu,ArrayList<Participante> listaP ){

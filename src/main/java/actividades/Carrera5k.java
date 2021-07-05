@@ -29,8 +29,8 @@ public class Carrera5k extends Actividad{
     public String toString() {
         return super.toString() + " Cantidad de participantes: " + listaParticipantes.size(); //To change body of generated methods, choose Tools | Templates.
     }
-
-    public void verificarCarrera(ArrayList<Carrera5k> lista_ac,ArrayList<Estudiante> listaE ) {
+/**
+    public boolean verificarCarrera(ArrayList<Carrera5k> lista_ac,ArrayList<Estudiante> listaE ) {
         String usrid;
         Scanner sc = new Scanner(System.in);
         System.out.println("Registro de Participantes");
@@ -38,6 +38,7 @@ public class Carrera5k extends Actividad{
         usrid = sc.nextLine();
         for(Actividad ac: lista_ac){
                 if(ac.getId().equals(usrid)){
+                    return true;
                     System.out.println("Registro de Participantes en la carrera del " + ac.getFecha());
                     ac.registrarParticipante(listaE);
                     break;
@@ -46,6 +47,25 @@ public class Carrera5k extends Actividad{
         }
         
     }
+    * */
+    
+    public int verificarCarrera(ArrayList<Carrera5k> listaC, ArrayList<Estudiante> listaE, String idusr){
+        int posicion = -1;
+        int i = 0;
+        while(i<listaC.size() && posicion == -1){
+            if(listaC.get(i).getId().equals(idusr)){
+                posicion = i;
+                i++;
+            }
+            else{
+                i++;
+            }
+            
+            
+        }
+        return posicion;
+    }
+
 
     @Override
     public void registrarParticipante(ArrayList<Estudiante> listaE) {
@@ -56,12 +76,9 @@ public class Carrera5k extends Actividad{
     
     //@Override
    public void registrarGanadores(ArrayList<Participante> listaP){
-        
-       
         String iduser;
         int posicion;
         int contador =  1;
-        int i=0;
         Scanner sc = new Scanner(System.in);
         while(contador<4){
         posicion = -1;
@@ -70,28 +87,40 @@ public class Carrera5k extends Actividad{
         System.out.println("Ingrese id del estudiante:");
         iduser = sc.nextLine();
         posicion = buscarParticipante(iduser, listaP);
-        
+        if(verificarGanador(iduser,listaGanadores) || posicion ==-1){
+                System.out.println("Ganador ya esta en la lista o no existe en la carrera.");
         }
-        System.out.println("Ingrese tiempo ");
-        float time;
-        time = sc.nextFloat();
-        sc.nextLine();
-        listaGanadores[contador-1] = new Participante5k((Estudiante) listaP.get(posicion), time);
-        contador++;
+        else{
+            System.out.println("Ingrese tiempo ");
+            float time;
+            time = sc.nextFloat();
+            sc.nextLine();
+            listaGanadores[contador-1] = new Participante5k((Estudiante) listaP.get(posicion), time);
+            contador++;
+            
+        }
+      
         } 
             
-
-    } 
+        }
+    }
+   
+       public boolean verificarGanador(String id,Participante[] listaG){
+        for(int z=0;z<listaG.length;z++){
+            if(listaG[z] != null && listaG[z].getId().equals(id)){
+                return true;
+                
+            }
+        }
+        return false;
+        
+    }
+    
     
 
 
    
 }
-        
-    
-    
-    
-    
     
     
     
