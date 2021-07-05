@@ -19,18 +19,23 @@ import objetosPersonas.*;
 
 public class Main {
      private ArrayList<Estudiante> listaEstudiantes;
+     private ArrayList<Banda> listaBandas;
      private ArrayList<Carrera5k> listaCarreras;
      private Carrera5k carrera;
      private ArrayList<TorneoVideojuegos> listatorneos;
      private TorneoVideojuegos torneo;
+     private ArrayList<BatallaBandas> listaBatallaB;
+     private BatallaBandas batalla;
      
      
     public Main() {//crea la lista
         listaEstudiantes = new ArrayList<>();
         listaCarreras = new ArrayList<>();
+        listaBatallaB = new ArrayList<>();
         listatorneos = new ArrayList<>();
         carrera = new Carrera5k();
         torneo = new TorneoVideojuegos();
+        batalla = new BatallaBandas();
     }
 
     public void cargarEstudiantes() {
@@ -109,15 +114,8 @@ public class Main {
                     System.out.println("Solo esta para mantener integridad del programa, dado que esto no se hace en grupos de 3.");
                     break;
                 case 2:
-                    String usrid;
-                    System.out.println("Registro de Participantes");
-                    System.out.println("Ingrese id de la carrera:");
-                    usrid = sc.nextLine();
-                    for(Carrera5k car: listaCarreras){
-                        if(car.getId().equals(usrid)){
-                            System.out.println("Registro de Participantes en la carrera del " + car.getFecha());
-                                car.registrarParticipante(listaEstudiantes);
-                } } break;
+                    carrera.verificarCarrera(listaCarreras, listaEstudiantes); 
+                    break;
                 case 3:
                     String carrid;
                     System.out.println("Registro de Ganadores");
@@ -181,6 +179,60 @@ public class Main {
         }
     
     
+
+    public void menuBandas(){
+        int ingreso;
+        Scanner sc = new Scanner(System.in);
+        do{
+        System.out.println("\nBatallas de bandas disponibles: \n");
+        for(BatallaBandas b: listaBatallaB){
+                System.out.println(b);
+            }
+ 
+        System.out.println("\n Bienvenido, Seleccione una opcion");
+        System.out.println("1. Crear nueva competencia de Batalla de Bandas");
+        System.out.println("2. Registrar participantes");
+        System.out.println("3. Registrar Ganadores");
+        System.out.println("4. Volver al menu principal");
+        
+        ingreso = sc.nextInt();
+        sc.nextLine();
+            switch(ingreso){
+                case 1:
+                   System.out.println("Fecha (dd/mm/yyyy):");
+                   String fecha = sc.nextLine();
+                   System.out.println("Hora(hh:mm):");
+                   String hora =sc.nextLine();
+                   System.out.println("Premio primer lugar:");
+                   String premio1 =sc.nextLine();
+                   System.out.println("Premio segundo lugar:");
+                   String premio2 =sc.nextLine();
+                   System.out.println("Premio tercer lugar:");
+                   String premio3 =sc.nextLine();
+                   System.out.println("Jurado");
+                   Jurado[] listaJ = batalla.registrarJurado();
+                   BatallaBandas b = new BatallaBandas(fecha,hora,premio1,premio2,premio3,listaJ);
+                   listaBatallaB.add(b);
+                   break;
+
+                case 2:
+                    String usrid;
+                    int verificacionB;
+                    System.out.println("Ingrese ID de la competencia:");
+                    usrid = sc.nextLine();
+                    verificacionB = batalla.verificarComp(listaBatallaB, listaEstudiantes,usrid);
+                    if(verificacionB>=0){
+                        listaBatallaB.get(verificacionB).registrarBanda(listaEstudiantes);
+                    }
+                    break;
+                case 3:
+                    System.out.println("Solo esta para mantener integridad del programa, dado que esto no se hace en grupos de 3.");
+                    break;
+            }
+        
+    }while(!(ingreso==4));
+        }
+    
     
     public static void main(String[] args) {
         int usring;
@@ -195,6 +247,10 @@ public class Main {
                 case 1:
                     m1.menu5k();
                     break;
+                case 2:
+                    m1.menuBandas();
+                    break;
+                 
                 case 3:
                     m1.menutorneo();
                     break;

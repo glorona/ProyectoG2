@@ -10,24 +10,14 @@ package objetosPersonas;
  *
  * @author gabri
  */
-enum rolBanda{
-        CANTANTE,GUITARRISTA,BAJISTA,BATERISTA,OTRO;
-    }
-public class IntegranteBanda extends Estudiante {
-    private rolBanda rol;
 
-    public IntegranteBanda(rolBanda rol, String id, String nombre, char genero, String carrera) {
+public class IntegranteBanda extends Estudiante {
+    private RolBanda rol;
+
+    public IntegranteBanda(RolBanda rol, String id, String nombre, char genero, String carrera) {
         super(id, nombre, genero,carrera);
         this.rol = rol;
     }
 
-    public rolBanda getRol() {
-        return rol;
-    }
-
-    public void setRol(rolBanda rol) {
-        this.rol = rol;
-    }
-    
     
 }

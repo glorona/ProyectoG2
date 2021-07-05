@@ -29,12 +29,13 @@ public class Actividad {
         this.premio_1 = premio_1;
         this.premio_2 = premio_2;
         this.premio_3 = premio_3;
-
         this.listaParticipantes = new ArrayList<>();
         this.listaGanadores = new Participante[3];
         
         
+        
     }
+    
 
     public String getId() {
         return id;
@@ -99,6 +100,10 @@ public class Actividad {
     public void setListaGanadores(Participante[] listaGanadores) {
         this.listaGanadores = listaGanadores;
     }
+
+
+    
+    
 
     @Override
     public String toString() {
