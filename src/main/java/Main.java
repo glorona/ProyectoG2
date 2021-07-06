@@ -194,13 +194,13 @@ public class Main {
         }
     
     
-
+//Menu de Batallas de Banda
     public void menuBandas(){
         int ingreso;
         Scanner sc = new Scanner(System.in);
         do{
         System.out.println("\nBatallas de bandas disponibles: \n");
-        for(BatallaBandas b: listaBatallaB){
+        for(BatallaBandas b: listaBatallaB){//Imprimo la lista de Batallas de Bandas que se han registrado
                 System.out.println(b);
             }
  
@@ -209,33 +209,33 @@ public class Main {
         System.out.println("2. Registrar participantes");
         System.out.println("3. Registrar Ganadores");
         System.out.println("4. Volver al menu principal");
-        
-        ingreso = sc.nextInt();
+        //Le doy al usuario su menu y sus opciones con los numeros
+        ingreso = sc.nextInt();//Almaceno su respuesta para usar el switch
         sc.nextLine();
             switch(ingreso){
-                case 1:
+                case 1://Si desea crear una competencia de batalla de bandas
                    System.out.println("Fecha (dd/mm/yyyy):");
-                   String fecha = sc.nextLine();
+                   String fecha = sc.nextLine();//Pido la fecha
                    System.out.println("Hora(hh:mm):");
-                   String hora =sc.nextLine();
+                   String hora =sc.nextLine();//Pido la banda
                    System.out.println("Premio primer lugar:");
-                   String premio1 =sc.nextLine();
+                   String premio1 =sc.nextLine();//el premio de los lugares 1 2 3
                    System.out.println("Premio segundo lugar:");
                    String premio2 =sc.nextLine();
                    System.out.println("Premio tercer lugar:");
                    String premio3 =sc.nextLine();
                    System.out.println("Jurado");
-                   Jurado[] listaJ = batalla.registrarJurado();
-                   BatallaBandas b = new BatallaBandas(fecha,hora,premio1,premio2,premio3,listaJ);
-                   listaBatallaB.add(b);
+                   Jurado[] listaJ = batalla.registrarJurado();//llamo el metodo de registrar jurados
+                   BatallaBandas b = new BatallaBandas(fecha,hora,premio1,premio2,premio3,listaJ);//creo la batalla de bandas
+                   listaBatallaB.add(b);//la agrego a la lista de las batallas de bandas disponibles
                    break;
 
                 case 2:
                     String usrid;
                     int verificacionB;
-                    System.out.println("Ingrese ID de la competencia:");
+                    System.out.println("Ingrese ID de la competencia:");//Pido el ID de la competencia que desea ingresar
                     usrid = sc.nextLine();
-                    verificacionB = batalla.verificarComp(listaBatallaB, listaEstudiantes,usrid);
+                    verificacionB = batalla.verificarComp(listaBatallaB, listaEstudiantes,usrid);//uso el metodo de verificarComp
                     if(verificacionB>=0){
                         listaBatallaB.get(verificacionB).registrarBanda(listaEstudiantes);
                     }
