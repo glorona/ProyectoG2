@@ -17,7 +17,7 @@ public class Jurado extends Participante {//Hago extends de la clase Padre Parti
         
     }
     public Jurado(String id, String nom, String bio){//Uso el constructor del participante y agrego el atributo bio
-        super(id,nom);
+        super(id,nom); //Uso super
         this.bio = bio;
         
     }

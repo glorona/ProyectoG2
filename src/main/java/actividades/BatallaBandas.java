@@ -132,13 +132,13 @@ public class BatallaBandas extends Actividad {//Uso extends para obtener los atr
         
     }
     
-    //Verificador de Comp
+    //Verificador de Competencia 
     public int verificarComp(ArrayList<BatallaBandas> listaB, ArrayList<Estudiante> listaE, String idusr ){
         int posicion = -1;
         int i = 0;
         while(i<listaB.size() && posicion == -1){
-            if(listaB.get(i).getId().equals(idusr)){
-                posicion = i;
+            if(listaB.get(i).getId().equals(idusr)){//de la Lista Bandas recolecto el id y lo comparo 
+                posicion = i;//y si esta posicion igual a 1
                 i++;
             }
             else{
@@ -147,7 +147,7 @@ public class BatallaBandas extends Actividad {//Uso extends para obtener los atr
             
             
         }
-        return posicion;
+        return posicion;//retorno posicion
     }
 
     //Con estoy voy a registrar la banda

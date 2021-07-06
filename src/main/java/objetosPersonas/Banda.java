@@ -13,12 +13,12 @@ import java.util.ArrayList;
  * @author gabri
  */
 
-public class Banda extends Participante {
-    private static int contador = 1;
-    protected String cancion;
-    protected IntegranteBanda[] integrantes;
+public class Banda extends Participante {//
+    private static int contador = 1;//Atributo que ayudara para generar ID
+    protected String cancion; //Atributo String cancion
+    protected IntegranteBanda[] integrantes; // List de Integrastes de la Banda
 
-    public Banda(String cancion, String nombre,IntegranteBanda[] integrantes) {
+    public Banda(String cancion, String nombre,IntegranteBanda[] integrantes) {//Constructor Banda
         Integer cod = new Integer(contador++);
         id =  Integer.toString(cod); //GENERA EL ID INMEDIATAMENTE
         this.nombre = nombre;
@@ -30,7 +30,7 @@ public class Banda extends Participante {
     public String toString() {
         return "ID: " + id + " Nombre:" + nombre; 
     }
-
+//Setters
     public void setIntegrantes(IntegranteBanda[] integrantes) {
         this.integrantes = integrantes;
     }

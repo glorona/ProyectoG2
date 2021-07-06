@@ -9,6 +9,6 @@ package objetosPersonas;
  *
  * @author gabri
  */
-public enum RolBanda{
+public enum RolBanda{ //Este enum restrige, es decir deja variables constantes a usarse
     CANTANTE,GUITARRISTA,BAJISTA,BATERISTA,OTRO;
 }

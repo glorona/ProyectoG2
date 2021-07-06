@@ -11,11 +11,11 @@ package objetosPersonas;
  * @author gabri
  */
 
-public class IntegranteBanda extends Estudiante {
+public class IntegranteBanda extends Estudiante {//Hago extends de la clase estudiante 
     private RolBanda rol;
 
-    public IntegranteBanda(RolBanda rol, String id, String nombre, char genero, String carrera) {
-        super(id, nombre, genero,carrera);
+    public IntegranteBanda(RolBanda rol, String id, String nombre, char genero, String carrera) {//Constructor integrntebanda
+        super(id, nombre, genero,carrera);//super del constructor
         this.rol = rol;
     }
 
