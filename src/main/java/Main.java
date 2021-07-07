@@ -136,8 +136,10 @@ public class Main {
                     System.out.println("Ingrese ID de la competencia:");
                     usrid2 = sc.nextLine(); //almaceno el id de la carrera
                     verificacionCarr = carrera.verificarCarrera(listaCarreras, listaEstudiantes,usrid2); //verifico que la carrera exista y almaceno su posicion 
-                    if(verificacionCarr>=0){ //ingreso si la posicion fue encontrada, sino sera -1
+                    if(verificacionCarr>=0 && listaCarreras.get(verificacionCarr).getVerificacion()){ //ingreso si la posicion fue encontrada, sino sera -1 y que su verificacion sea true pues debe estar disponible
                         listaCarreras.get(verificacionCarr).registrarGanadores(listaCarreras.get(verificacionCarr).getListaParticipantes()); //aplico el metodo en la carrera para registrar ganadores
+                    } else {
+                        System.out.println("La carrera ya fue finalizada o no existe"); //ya que su atributo verificacion es false, la carrera ya no esta disponible
                     }
             }
         
@@ -194,8 +196,10 @@ public class Main {
                     System.out.println("Ingrese ID del torneo:");
                     usridtor = sc.nextLine();//almaceno el id del torneo
                     verificaciontor = torneo.verificarTorneo(listatorneos, listaEstudiantes,usridtor); //verifico que el torneo exista y almaceno su posicion 
-                    if(verificaciontor>=0){ //ingreso si la posicion fue encontrada, sino sera -1
+                    if (verificaciontor>=0 && listatorneos.get(verificaciontor).getVerificacion()){ //ingreso si la posicion fue encontrada, sino sera -1 y que su verificacion sea true pues debe estar disponible
                         listatorneos.get(verificaciontor).registrarGanadores(listatorneos.get(verificaciontor).getListaParticipantes()); //aplico el metodo en el torneo para registrar ganadores
+                    } else {
+                        System.out.println("El torneo ya fue finalizado o no existe"); //ya que su atributo verificacion es false, la carrera ya no esta disponible
                     }
                     
                     
