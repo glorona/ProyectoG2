@@ -1,3 +1,5 @@
+package System;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -273,7 +275,7 @@ public class Main {
     
     public static void main(String[] args) {
         int usring;
-        System.out.println("Hola, esta es la prueba del proyecto correspondiente al grupo dos.");
+        System.out.println("Hola, este es el proyecto correspondiente al grupo dos. \n Sistema de registro de actividades \n");
    
         Main m1 = new Main(); //accedo a los metodos del Main y a sus atributos
         m1.cargarEstudiantes(); //cargo los estudiantes 
