@@ -33,6 +33,13 @@ public class BatallaBandas extends Actividad {//Uso extends para obtener los atr
         this.listaJurado = listaJurado;
     }
     
+    public BatallaBandas(String f, String h, String p1, String p2, String p3, Jurado[] listaJurado, boolean v){//con verificacion de si esta abierta o no
+        super(f,h,p1,p2,p3,v);//Se hace un super para llamar el constructor de la clase main
+        this.listaBandas = new ArrayList<>();
+        this.listaJurado = listaJurado;
+    }
+    
+    
     public BatallaBandas(){
         super();//Llama a constructor de la clase main
     }

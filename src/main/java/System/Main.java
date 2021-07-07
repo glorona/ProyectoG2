@@ -244,7 +244,7 @@ public class Main {
                    String premio3 =sc.nextLine();
                    System.out.println("Jurado");
                    Jurado[] listaJ = batalla.registrarJurado();//llamo el metodo de registrar jurados
-                   BatallaBandas b = new BatallaBandas(fecha,hora,premio1,premio2,premio3,listaJ);//creo la batalla de bandas
+                   BatallaBandas b = new BatallaBandas(fecha,hora,premio1,premio2,premio3,listaJ,true);//creo la batalla de bandas
                    listaBatallaB.add(b);//la agrego a la lista de las batallas de bandas disponibles
                    break;
 
