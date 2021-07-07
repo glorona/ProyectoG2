@@ -21,11 +21,12 @@ public class Estudiante extends Participante {
         
     }
     
-    public Estudiante(){
+    public Estudiante(){ //se define constructor vacio para usar metodos de la clase
         
     }
     
-
+    
+    //GETTERS
     public String getCarrera() {
         return carrera;
     }
@@ -33,7 +34,8 @@ public class Estudiante extends Participante {
     public char getGenero() {
         return genero;
     }
-
+    
+    //SETTERS
     public void setCarrera(String carrera) {
         this.carrera = carrera;
     }
@@ -42,6 +44,7 @@ public class Estudiante extends Participante {
         this.genero = genero;
     }
     
+    //metodo toString para mostrar los datos del estudiante
     @Override
     public String toString() {
         return "Estudiante{" + "id=" + id + ", nombre=" + nombre + '}';

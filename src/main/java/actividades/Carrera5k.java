@@ -76,7 +76,7 @@ public class Carrera5k extends Actividad{ //definicion de carrera5k que hereda d
             float time;
             time = sc.nextFloat();
             sc.nextLine(); //limpiar buffer
-            listaGanadores[contador-1] = new Participante5k((Estudiante) listaP.get(posicion), time); //se agrega a la lista
+            listaGanadores[contador-1] = new Participante5k((Estudiante) listaP.get(posicion), time); //se agrega a la lista haciendo downcasting
             contador++; //se itera, se agrega el contador
             
         }

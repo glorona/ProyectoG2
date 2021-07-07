@@ -8,27 +8,27 @@
  *
  * @author gabri
  */
-import actividades.*;
+import actividades.*; //importo todas las actividades
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.*;
-import objetosPersonas.*;
+import objetosPersonas.*; //importo todas las clases con las personas
 
 public class Main {
-     private ArrayList<Estudiante> listaEstudiantes;
+     private ArrayList<Estudiante> listaEstudiantes; //atributos 
      private ArrayList<Banda> listaBandas;
      private ArrayList<Carrera5k> listaCarreras;
-     private Carrera5k carrera;
+     private Carrera5k carrera; //atributo para poder utilizar los metodos de la clase
      private ArrayList<TorneoVideojuegos> listatorneos;
-     private TorneoVideojuegos torneo;
+     private TorneoVideojuegos torneo; //atributo para poder utilizar los metodos de la clase
      private ArrayList<BatallaBandas> listaBatallaB;
      private BatallaBandas batalla;
      
      
-    public Main() {//crea la lista
+    public Main() {//crea las listas y los atributos para usar los metodos de las clases
         listaEstudiantes = new ArrayList<>();
         listaCarreras = new ArrayList<>();
         listaBatallaB = new ArrayList<>();
@@ -71,130 +71,131 @@ public class Main {
     }
     
     
-    public void cargarActividades(){
-        listaCarreras.add(new Carrera5k("21-06-2021", "5pm", "$30", "$15", "$10",true));
-        listaCarreras.add(new Carrera5k("21-05-2020", "5pm", "$40", "$25", "$5"));
-        listatorneos.add(new TorneoVideojuegos("22-06-2020", "4pm", "$50", "$30", "$15", "LOL"));
-        listatorneos.add(new TorneoVideojuegos("22-06-2021", "4pm", "$55", "35", "20", "FreeFire",true));
-        listaBatallaB.add(new BatallaBandas("21-07-2020", "5pm", "$100","$50","$25"));
-        listaBatallaB.add(new BatallaBandas("15-08-2021", "6pm", "$100","$50","$25",true));
+    public void cargarActividades(){ //se agregan las instancias de cada clase 
+        listaCarreras.add(new Carrera5k("21-06-2021", "5pm", "$30", "$15", "$10",true)); //carrera disponible (true)
+        listaCarreras.add(new Carrera5k("21-05-2020", "5pm", "$40", "$25", "$5")); //carrera finalizada
+        listatorneos.add(new TorneoVideojuegos("22-06-2020", "4pm", "$50", "$30", "$15", "LOL")); //torneo finalizado
+        listatorneos.add(new TorneoVideojuegos("22-06-2021", "4pm", "$55", "35", "20", "FreeFire",true)); //torneo disponible
+        listaBatallaB.add(new BatallaBandas("21-07-2020", "5pm", "$100","$50","$25")); //carrera finalizada
+        listaBatallaB.add(new BatallaBandas("15-08-2021", "6pm", "$100","$50","$25",true)); //batalla disponible
     }
     
     public int menu(){
         int ingreso;
-        Scanner sc = new Scanner(System.in);
-        System.out.println("\nBienvenido, Seleccione una opcion");
+        Scanner sc = new Scanner(System.in); 
+        System.out.println("\nBienvenido, Seleccione una opcion"); //menu principal
         System.out.println("1. Carrera5k");
         System.out.println("2. Competencia de bandas musicales");
         System.out.println("3. Torneo de videojuegos. ");
         System.out.println("4. Salir");
-        ingreso = sc.nextInt();
-        return ingreso;
+        ingreso = sc.nextInt(); //se almacena el numero de la opcion elegida
+        return ingreso; //se retorna el numero de la opcion elegida
         
     }
     
-    public void menu5k(){
+    public void menu5k(){ //menu a presentar en la opcion de carrera5k
         int ingreso;
         Scanner sc = new Scanner(System.in);
         do{
         System.out.println("\nCarreras disponibles: \n");
-        for(Carrera5k ac: listaCarreras){
+        for(Carrera5k ac: listaCarreras){ //itero en las carreras de la lista
           
-                System.out.println(ac);
+                System.out.println(ac); //muestro las carreras que ya han sido creadas para que visualicen el id y sigan con el menu
             }
  
-        System.out.println("\n Bienvenido, Seleccione una opcion");
+        System.out.println("\n Bienvenido, Seleccione una opcion"); //menu de las opciones 
         System.out.println("1. Crear nueva carrera");
         System.out.println("2. Registrar participantes");
         System.out.println("3. Registrar Ganadores");
         System.out.println("4. Salir");
         
-        ingreso = sc.nextInt();
-        sc.nextLine();
-            switch(ingreso){
+        ingreso = sc.nextInt(); //almaceno la opcion escogida por el usuario
+        sc.nextLine(); //limpio el buffer
+            switch(ingreso){ //uso switch para saber que opcion escogio y agrego casos para las opciones
                 case 1:
                     System.out.println("Solo esta para mantener integridad del programa, dado que esto no se hace en grupos de 3.");
-                    break;
+                    break; //salgo de la opcion y regreso al menu5k
                 case 2:
                     String usrid;
-                    int verificacionC;
+                    int verificacionC; //almacenara la posicion de la carrera si es que existe
                     System.out.println("Ingrese ID de la competencia:");
-                    usrid = sc.nextLine();
-                    verificacionC = carrera.verificarCarrera(listaCarreras, listaEstudiantes,usrid);
-                    if(verificacionC>=0){
-                        if(listaCarreras.get(verificacionC).getVerificacion()){
-                        listaCarreras.get(verificacionC).registrarParticipante(listaEstudiantes);
+                    usrid = sc.nextLine(); //almaceno el id escogido de la carrera
+                    verificacionC = carrera.verificarCarrera(listaCarreras, listaEstudiantes,usrid); //verifico que la carrera exista y esté en la lista de carreras para almacenar su posicion
+                    if(verificacionC>=0){ //ingreso si la posicion de la carrera es mayor que cero por lo que efectivamente existe en la lista
+                        if(listaCarreras.get(verificacionC).getVerificacion()){ //obtengo la carrera de la lista y si su atributo verificacion es TRUE ingreso para guardar el participante ya que esta disponible
+                        listaCarreras.get(verificacionC).registrarParticipante(listaEstudiantes); //al obtener la carrera, utilizo el metodo para registrar participantes
                         }
                         else{
-                            System.out.println("Carrera ya finalizada");
+                            System.out.println("Carrera ya finalizada"); //ya que su atributo verificacion es false, la carrera ya no esta disponible
                         }
                     }
-                    break;
+                    break; //regreso al menu5k
                 case 3:
                     String usrid2;
-                    int verificacionCarr;
+                    int verificacionCarr; //almacenara la posicion de la carrera luego de verificar que exista
                     System.out.println("Ingrese ID de la competencia:");
-                    usrid2 = sc.nextLine();
-                    verificacionCarr = carrera.verificarCarrera(listaCarreras, listaEstudiantes,usrid2);
-                    if(verificacionCarr>=0){
-                        listaCarreras.get(verificacionCarr).registrarGanadores(listaCarreras.get(verificacionCarr).getListaParticipantes());
+                    usrid2 = sc.nextLine(); //almaceno el id de la carrera
+                    verificacionCarr = carrera.verificarCarrera(listaCarreras, listaEstudiantes,usrid2); //verifico que la carrera exista y almaceno su posicion 
+                    if(verificacionCarr>=0){ //ingreso si la posicion fue encontrada, sino sera -1
+                        listaCarreras.get(verificacionCarr).registrarGanadores(listaCarreras.get(verificacionCarr).getListaParticipantes()); //aplico el metodo en la carrera para registrar ganadores
                     }
             }
         
-    }while(!(ingreso==4));
+    }while(!(ingreso==4)); //salgo del menu en el caso de quiera regresar al principal
         }
    
     
-    public void menutorneo(){
+    public void menutorneo(){ //menu a presentar en la opcion de torneo de videojuegos
         int ingreso;
         Scanner sc = new Scanner(System.in);
         do{
         System.out.println("\nTorneos disponibles: \n");
-        for(TorneoVideojuegos tor: listatorneos){
-                System.out.println(tor);
+        for(TorneoVideojuegos tor: listatorneos){ //itero en los torneos de la lista
+                System.out.println(tor); //muestro las carreras que ya han sido creadas para que visualicen el id y sigan con el menu
             }
  
-        System.out.println("\n Bienvenido, Seleccione una opcion");
+        System.out.println("\n Bienvenido, Seleccione una opcion"); //menu de las opciones 
         System.out.println("1. Crear nuevo torneo");
         System.out.println("2. Registrar participantes");
         System.out.println("3. Registrar Ganadores");
         System.out.println("4. Volver al menu principal");
         
-        ingreso = sc.nextInt();
-        sc.nextLine();
-            switch(ingreso){
+        ingreso = sc.nextInt(); //almaceno la opcion escogida por el usuario
+        sc.nextLine(); //limpio el buffer
+            switch(ingreso){ //uso switch para saber que opcion escogio y agrego casos para las opciones
                 case 1:
                     System.out.println("Solo esta para mantener integridad del programa, dado que esto no se hace en grupos de 3.");
-                    break;
+                    break; //salgo de la opcion y regreso al menutorneo
                 case 2:
                     String id;
-                    int verificacion;
+                    int verificacion; //almacenara la posicion del torneo si es que existe
                     System.out.println("Ingrese ID del torneo:");
-                    id = sc.nextLine();
+                    id = sc.nextLine(); //almaceno el id escogido del torneo
                     
-                    verificacion = torneo.verificarTorneo(listatorneos, listaEstudiantes, id);
-                    System.out.println("Registro de Participantes en torneo de videojuego " + listatorneos.get(verificacion).getVideojuego());
+                    verificacion = torneo.verificarTorneo(listatorneos, listaEstudiantes, id); //verifico que el torneo exista y esté en la lista de torneos para almacenar su posicion
+                    //System.out.println("Registro de Participantes en torneo de videojuego " + listatorneos.get(verificacion).getVideojuego());
              
-                    if (verificacion>=0){
-                        if(listatorneos.get(verificacion).getVerificacion()){
-                        listatorneos.get(verificacion).registrarParticipante(listaEstudiantes);
+                    if (verificacion>=0){ //ingreso si la posicion del torneo es mayor que cero por lo que efectivamente existe en la lista
+                        if(listatorneos.get(verificacion).getVerificacion()){ //obtengo el torneo de la lista y si su atributo verificacion es TRUE ingreso para guardar el participante ya que esta disponible
+                        System.out.println("Registro de Participantes en torneo de videojuego " + listatorneos.get(verificacion).getVideojuego());
+                            listatorneos.get(verificacion).registrarParticipante(listaEstudiantes);//al obtener el torneo, utilizo el metodo para registrar participantes
                         }
                         else{
-                            System.out.println("Torneo ya finalizado.");
+                            System.out.println("Torneo ya finalizado."); //ya que su atributo verificacion es false, la carrera ya no esta disponible
                         }
                     }
-                    break;
+                    break; //regreso al menutorneo
                     
 
                 case 3:
                 
-                    String usrid2;
-                    int verificaciontor;
+                    String usridtor;
+                    int verificaciontor; //almacenara la posicion del torneo luego de verificar que exista
                     System.out.println("Ingrese ID del torneo:");
-                    usrid2 = sc.nextLine();
-                    verificaciontor = torneo.verificarTorneo(listatorneos, listaEstudiantes,usrid2);
-                    if(verificaciontor>=0){
-                        listatorneos.get(verificaciontor).registrarGanadores(listatorneos.get(verificaciontor).getListaParticipantes());
+                    usridtor = sc.nextLine();//almaceno el id del torneo
+                    verificaciontor = torneo.verificarTorneo(listatorneos, listaEstudiantes,usridtor); //verifico que el torneo exista y almaceno su posicion 
+                    if(verificaciontor>=0){ //ingreso si la posicion fue encontrada, sino sera -1
+                        listatorneos.get(verificaciontor).registrarGanadores(listatorneos.get(verificaciontor).getListaParticipantes()); //aplico el metodo en el torneo para registrar ganadores
                     }
                     
                     
@@ -262,7 +263,7 @@ public class Main {
                     break;
             }
         
-    }while(!(ingreso==4));
+    }while(!(ingreso==4)); //salgo del menu
         }
     
     
@@ -270,25 +271,25 @@ public class Main {
         int usring;
         System.out.println("Hola, esta es la prueba del proyecto correspondiente al grupo dos.");
    
-        Main m1 = new Main();
-        m1.cargarEstudiantes();
-        m1.cargarActividades();
+        Main m1 = new Main(); //accedo a los metodos del Main y a sus atributos
+        m1.cargarEstudiantes(); //cargo los estudiantes 
+        m1.cargarActividades(); //cargo las actividades creadas
         do{
-        usring = m1.menu();
-            switch(usring){
+        usring = m1.menu(); //se guarda la opcion escogida por el usuario
+            switch(usring){ //uso switch para saber que opcion quiere realizar el usuario
                 case 1:
-                    m1.menu5k();
-                    break;
+                    m1.menu5k(); //ingreso al menu5k y sus opciones
+                    break; //salgo de la opcion para ver el menu nuevamente
                 case 2:
-                    m1.menuBandas();
-                    break;
+                    m1.menuBandas(); //ingreso al menu de bandas y sus opciones
+                    break; //salgo de la opcion para ver el menu nuevamente
                  
                 case 3:
-                    m1.menutorneo();
-                    break;
+                    m1.menutorneo(); //ingreso al menu de torneo de videojuegos y sus opciones
+                    break; //salgo de la opcion para ver el menu nuevamente
                 
             }
-        }while(!(usring==4));
+        }while(!(usring==4)); //salgo del menu principal 
     }
     
 }

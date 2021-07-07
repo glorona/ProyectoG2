@@ -11,9 +11,10 @@ package objetosPersonas;
  * @author gabri
  */
 public class Participante {
-    protected String id;
+    protected String id; //atributos 
     protected String nombre;
-
+    
+    //GETTERS
     public String getId() {
         return id;
     }
@@ -21,7 +22,8 @@ public class Participante {
     public String getNombre() {
         return nombre;
     }
-
+    
+    //SETTERS
     public void setId(String id) {
         this.id = id;
     }
@@ -30,15 +32,16 @@ public class Participante {
         this.nombre = nombre;
     }
     
-
-
+    
+    //Constructor para agregar los atributos de participante y super() para los atributos heredados
     public Participante(String id, String nombre) {
         super();
         this.id = id;
         this.nombre = nombre;
     }
     
-    public Participante(){
+    
+    public Participante(){ //se define constructor vacio para usar metodos de la clase
         
     }
     
