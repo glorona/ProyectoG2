@@ -24,6 +24,11 @@ public class TorneoVideojuegos extends Actividad{
         this.videojuego = v;
     }
     
+    public TorneoVideojuegos(String fecha, String hora, String premio1, String premio2, String premio3, String v, boolean ver){
+        super(fecha,hora,premio1,premio2,premio3,ver);
+        this.videojuego = v;
+    }
+    
     public String getVideojuego(){
         return videojuego;
     }
@@ -87,16 +92,7 @@ public class TorneoVideojuegos extends Actividad{
             
         }
     }
+
     
-    public boolean verificarGanador(String id,Participante[] listaG){
-        for(int z=0;z<listaG.length;z++){
-            if(listaG[z] != null && listaG[z].getId().equals(id)){
-                return true;
-                
-            }
-        }
-        return false;
-        
-    }
     
 }

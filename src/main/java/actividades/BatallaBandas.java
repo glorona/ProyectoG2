@@ -15,8 +15,20 @@ public class BatallaBandas extends Actividad {//Uso extends para obtener los atr
     private Jurado[] listaJurado;//Creo los atributos: la lista Jurado y el ArrayList de Objetos de Clase Banda
     protected ArrayList<Banda> listaBandas;
     
-    public BatallaBandas(String f, String h, String p1, String p2, String p3, Jurado[] listaJurado){//Se llama al constructor y se addiere Jurado[]
+    public BatallaBandas(String f, String h, String p1, String p2, String p3, Jurado[] listaJurado){//Se llama al constructor y se addiere Jurado[] para registrar lista de jurados
         super(f,h,p1,p2,p3);//Se hace un super para llamar el constructor de la clase main
+        this.listaBandas = new ArrayList<>();
+        this.listaJurado = listaJurado;
+    }
+    
+    public BatallaBandas(String f, String h, String p1, String p2, String p3){//Se llama al constructor sin jurado para que se pueda crear una carrera en el main
+        super(f,h,p1,p2,p3);//Se hace un super para llamar el constructor de la clase main
+        this.listaBandas = new ArrayList<>();
+        this.listaJurado = listaJurado;
+    }
+    
+    public BatallaBandas(String f, String h, String p1, String p2, String p3, boolean v){//con verificacion de si esta abierta o no
+        super(f,h,p1,p2,p3,v);//Se hace un super para llamar el constructor de la clase main
         this.listaBandas = new ArrayList<>();
         this.listaJurado = listaJurado;
     }

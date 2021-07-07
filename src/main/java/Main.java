@@ -72,10 +72,12 @@ public class Main {
     
     
     public void cargarActividades(){
-        listaCarreras.add(new Carrera5k("21-06-2021", "5pm", "$30", "$15", "$10"));
+        listaCarreras.add(new Carrera5k("21-06-2021", "5pm", "$30", "$15", "$10",true));
         listaCarreras.add(new Carrera5k("21-05-2020", "5pm", "$40", "$25", "$5"));
         listatorneos.add(new TorneoVideojuegos("22-06-2020", "4pm", "$50", "$30", "$15", "LOL"));
-        listatorneos.add(new TorneoVideojuegos("22-06-2021", "4pm", "$55", "35", "20", "FreeFire"));
+        listatorneos.add(new TorneoVideojuegos("22-06-2021", "4pm", "$55", "35", "20", "FreeFire",true));
+        listaBatallaB.add(new BatallaBandas("21-07-2020", "5pm", "$100","$50","$25"));
+        listaBatallaB.add(new BatallaBandas("15-08-2021", "6pm", "$100","$50","$25",true));
     }
     
     public int menu(){
@@ -120,7 +122,12 @@ public class Main {
                     usrid = sc.nextLine();
                     verificacionC = carrera.verificarCarrera(listaCarreras, listaEstudiantes,usrid);
                     if(verificacionC>=0){
+                        if(listaCarreras.get(verificacionC).getVerificacion()){
                         listaCarreras.get(verificacionC).registrarParticipante(listaEstudiantes);
+                        }
+                        else{
+                            System.out.println("Carrera ya finalizada");
+                        }
                     }
                     break;
                 case 3:
@@ -169,8 +176,12 @@ public class Main {
                     System.out.println("Registro de Participantes en torneo de videojuego " + listatorneos.get(verificacion).getVideojuego());
              
                     if (verificacion>=0){
+                        if(listatorneos.get(verificacion).getVerificacion()){
                         listatorneos.get(verificacion).registrarParticipante(listaEstudiantes);
-                        
+                        }
+                        else{
+                            System.out.println("Torneo ya finalizado.");
+                        }
                     }
                     break;
                     
@@ -237,7 +248,13 @@ public class Main {
                     usrid = sc.nextLine();
                     verificacionB = batalla.verificarComp(listaBatallaB, listaEstudiantes,usrid);//uso el metodo de verificarComp
                     if(verificacionB>=0){
-                        listaBatallaB.get(verificacionB).registrarBanda(listaEstudiantes);
+                        if(listaBatallaB.get(verificacionB).getVerificacion()){ //si esta true significa que se puede registrar
+                            listaBatallaB.get(verificacionB).registrarBanda(listaEstudiantes);                     
+                        }
+                        else{
+                            System.out.println("Batalla de bandas finalizada.");
+                        }
+                        
                     }
                     break;
                 case 3:
